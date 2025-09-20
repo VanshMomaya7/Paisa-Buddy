@@ -1,11 +1,9 @@
 import { useState } from "react";
 import "./App.css";
-import Auth from "./Auth";
+import LandingPage from "./pages/landing/LandingPage";
 
 function App() {
-  return <>
-  <Auth />
-  </>;
+  return <LandingPage />;
 }
 
 export default App;
