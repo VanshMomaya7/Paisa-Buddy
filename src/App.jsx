@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/landing/LandingPage";
 import Credit from "./pages/CreditManagement/Credit";
 import FraudDetectionQuiz from "./pages/quiz/FraudDetectionQuiz";
-import VirtualSimulator from "./pages/VirtualSimulator/virtualPageSimulator";
+import VirtualSimulator from "./pages/VirtualSimulator/virtualSimulatorNew";
 import TestSupabase from "./testSupabase";
 import BudgetingTool from "./pages/BudgetTracker/BudgetTracker";
 
