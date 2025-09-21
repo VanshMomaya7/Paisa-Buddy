@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AuthUI from "../../AuthUI";
 import { supabase } from "../../supabaseClient";
 import { Link } from "react-router-dom";
-
+import ThemeToggle from "../Theme/ThemeToggle";
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -37,12 +37,12 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Navigation */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 backdrop-blur-md shadow-sm"
+            ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm"
             : "bg-transparent"
         }`}
       >
@@ -54,7 +54,7 @@ const LandingPage = () => {
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center shadow-lg">
                   <span className="text-white font-bold text-lg">P</span>
                 </div>
-                <span className="ml-3 text-xl font-semibold text-gray-900 tracking-tight">
+                <span className="ml-3 text-xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight transition-colors duration-300">
                   PaisaBuddy
                 </span>
               </Link>
@@ -64,34 +64,44 @@ const LandingPage = () => {
             <div className="hidden md:flex items-center space-x-6">
               <Link
                 to="/learning"
-                className="text-gray-700 hover:text-gray-900"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
               >
                 Learning
               </Link>
-              <Link to="/quiz" className="text-gray-700 hover:text-gray-900">
+              <Link
+                to="/quiz"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
+              >
                 Quiz
               </Link>
               <Link
                 to="/simulator"
-                className="text-gray-700 hover:text-gray-900"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
               >
                 Simulator
               </Link>
-              <Link to="/credit" className="text-gray-700 hover:text-gray-900">
+              <Link
+                to="/credit"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
+              >
                 Credit
               </Link>
-              <Link to="/budget" className="text-gray-700 hover:text-gray-900">
-                Budget-Tools
+              <Link
+                to="/budget"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
+              >
+                Budget
               </Link>
             </div>
 
-            {/* Auth Buttons */}
+            {/* Auth Buttons & Theme Toggle */}
             <div className="flex items-center space-x-3">
+              <ThemeToggle />
               {!session ? (
                 <>
                   <button
                     onClick={openAuth}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200 rounded-lg hover:bg-gray-100"
+                    className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                   >
                     Login
                   </button>
@@ -105,7 +115,7 @@ const LandingPage = () => {
               ) : (
                 <button
                   onClick={handleLogout}
-                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300"
                 >
                   Logout
                 </button>
@@ -119,21 +129,21 @@ const LandingPage = () => {
         <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
           {/* Background Gradients */}
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-1/4 w-72 h-72 bg-green-200/30 rounded-full blur-3xl"></div>
-            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 left-1/4 w-72 h-72 bg-green-200/30 dark:bg-green-400/10 rounded-full blur-3xl transition-colors duration-300"></div>
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-200/20 dark:bg-blue-400/10 rounded-full blur-3xl transition-colors duration-300"></div>
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="max-w-4xl mx-auto">
               {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 rounded-full mb-8">
-                <span className="text-sm font-medium text-gray-700">
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-100 to-blue-100 dark:from-green-900/30 dark:to-blue-900/30 rounded-full mb-8 transition-colors duration-300">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">
                   🎯 Your Personal Finance Journey Starts Here
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-6 leading-tight transition-colors duration-300">
                 Master Your Money with
                 <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
                   {" "}
@@ -142,7 +152,7 @@ const LandingPage = () => {
               </h1>
 
               {/* Subtext */}
-              <p className="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed transition-colors duration-300">
                 Transform your financial future with personalized learning,
                 smart budgeting tools, and expert guidance. Start building
                 wealth today.
@@ -167,7 +177,7 @@ const LandingPage = () => {
               </button>
 
               {/* Trust Indicators */}
-              <div className="mt-12 flex items-center justify-center space-x-8 text-gray-500">
+              <div className="mt-12 flex items-center justify-center space-x-8 text-gray-500 dark:text-gray-400 transition-colors duration-300">
                 <span className="text-sm">🔒 Bank-level Security</span>
                 <span className="text-sm">📱 Mobile First</span>
                 <span className="text-sm">⭐ 4.9/5 Rating</span>
@@ -176,18 +186,18 @@ const LandingPage = () => {
           </div>
         </section>
         {/* Features Section */}
-        <section className="py-16 lg:py-24 bg-white">
+        <section className="py-16 lg:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
           {" "}
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {" "}
             <div className="text-center mb-16">
               {" "}
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">
                 {" "}
                 Everything You Need to{" "}
                 <span className="text-teal-600"> Succeed Financially</span>{" "}
               </h2>{" "}
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
                 {" "}
                 Comprehensive tools and personalized guidance to help you
                 achieve your financial goals{" "}
@@ -196,7 +206,7 @@ const LandingPage = () => {
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
               {" "}
               {/* Feature 1 */}{" "}
-              <div className="group p-8 rounded-2xl bg-gradient-to-br from-green-50 to-teal-50 border border-green-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="group p-8 rounded-2xl bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 border border-green-100 dark:border-green-800/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 {" "}
                 <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {" "}
@@ -215,11 +225,11 @@ const LandingPage = () => {
                     />{" "}
                   </svg>{" "}
                 </div>{" "}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
                   {" "}
                   Interactive Learning{" "}
                 </h3>{" "}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
                   {" "}
                   Master personal finance through engaging courses, quizzes, and
                   real-world scenarios. Learn at your own pace with
@@ -227,7 +237,7 @@ const LandingPage = () => {
                 </p>{" "}
               </div>{" "}
               {/* Feature 2 */}{" "}
-              <div className="group p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="group p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-100 dark:border-blue-800/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 {" "}
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {" "}
@@ -246,11 +256,11 @@ const LandingPage = () => {
                     />{" "}
                   </svg>{" "}
                 </div>{" "}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
                   {" "}
                   Smart Budgeting{" "}
                 </h3>{" "}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
                   {" "}
                   AI-powered budget tracking that adapts to your lifestyle. Get
                   personalized insights and recommendations to optimize your
@@ -258,7 +268,7 @@ const LandingPage = () => {
                 </p>{" "}
               </div>{" "}
               {/* Feature 3 */}{" "}
-              <div className="group p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+              <div className="group p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border border-purple-100 dark:border-purple-800/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                 {" "}
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {" "}
@@ -277,11 +287,11 @@ const LandingPage = () => {
                     />{" "}
                   </svg>{" "}
                 </div>{" "}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
                   {" "}
                   Goal Achievement{" "}
                 </h3>{" "}
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
                   {" "}
                   Set and track financial goals with milestone celebrations.
                   From emergency funds to dream purchases, we help you stay
@@ -293,7 +303,7 @@ const LandingPage = () => {
         </section>{" "}
       </main>
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 w-[99vw]">
+      <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12 w-[99vw] transition-colors duration-300">
         {" "}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {" "}
@@ -309,7 +319,7 @@ const LandingPage = () => {
               <span className="ml-2 text-lg font-semibold">PaisaBuddy</span>{" "}
             </div>{" "}
             {/* Links */}{" "}
-            <div className="flex items-center space-x-8 text-sm text-gray-300">
+            <div className="flex items-center space-x-8 text-sm text-gray-300 dark:text-gray-400 transition-colors duration-300">
               {" "}
               <a
                 href="#about"
@@ -341,7 +351,7 @@ const LandingPage = () => {
               </a>{" "}
             </div>{" "}
           </div>{" "}
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-gray-800 dark:border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400 dark:text-gray-500 transition-colors duration-300">
             {" "}
             <p>
               {" "}
@@ -354,10 +364,10 @@ const LandingPage = () => {
       {/* Auth Modal */}
       {isAuthOpen && !session && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md relative">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-md relative transition-colors duration-300">
             <button
               onClick={closeAuth}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-900 text-xl font-bold"
+              className="absolute top-3 right-3 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-xl font-bold transition-colors duration-300"
             >
               &times;
             </button>

@@ -20,7 +20,7 @@ function App() {
         <Route path="/quiz" element={<FraudDetectionQuiz />} />
         <Route path="/simulator" element={<VirtualSimulator />} />
         <Route path="/test-supabase" element={<TestSupabase />} />
-        <Route path="/learning" element={<LearningModule />} />
+        {/* <Route path="/learning" element={<LearningModule />} /> */}
         <Route path="/budget" element={<BudgetingTool />} />
       </Routes>
     </BrowserRouter>

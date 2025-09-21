@@ -191,7 +191,7 @@ const BudgetingTool = () => {
             <div className="bg-gradient-to-r from-green-100 to-teal-100 rounded-xl p-4">
               <p className="text-sm font-medium text-slate-600">Total Income</p>
               <p className="text-2xl font-bold text-teal-700">
-                ${income.toLocaleString()}
+                ₹{income.toLocaleString()}
               </p>
             </div>
             <div className="bg-gradient-to-r from-red-100 to-pink-100 rounded-xl p-4">
@@ -199,7 +199,7 @@ const BudgetingTool = () => {
                 Total Expenses
               </p>
               <p className="text-2xl font-bold text-red-600">
-                ${totalExpenses.toLocaleString()}
+                ₹{totalExpenses.toLocaleString()}
               </p>
             </div>
             <div
@@ -215,7 +215,7 @@ const BudgetingTool = () => {
                   remainingBudget >= 0 ? "text-blue-700" : "text-red-600"
                 }`}
               >
-                ${remainingBudget.toLocaleString()}
+                ₹{remainingBudget.toLocaleString()}
               </p>
             </div>
           </div>
@@ -279,7 +279,7 @@ const BudgetingTool = () => {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value) => [`$${value}`, "Amount"]} />
+                <Tooltip formatter={(value) => [`₹${value}`, "Amount"]} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -297,7 +297,7 @@ const BudgetingTool = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />
-                <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                <Tooltip formatter={(value) => [`₹${value}`, ""]} />
                 <Legend />
                 <Line
                   type="monotone"
@@ -334,7 +334,7 @@ const BudgetingTool = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />
-                <Tooltip formatter={(value) => [`$${value}`, ""]} />
+                <Tooltip formatter={(value) => [`₹${value}`, ""]} />
                 <Legend />
                 <Bar dataKey="income" fill="#4FB7B3" name="Income" />
                 <Bar dataKey="expenses" fill="#637AB9" name="Expenses" />
@@ -367,7 +367,7 @@ const BudgetingTool = () => {
                 >
                   <h3 className="font-bold text-slate-800 mb-2">{goal.name}</h3>
                   <p className="text-sm text-slate-600 mb-4">
-                    ${goal.current.toLocaleString()} / $
+                    ₹{goal.current.toLocaleString()} / ₹
                     {goal.target.toLocaleString()}
                   </p>
 
