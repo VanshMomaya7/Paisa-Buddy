@@ -20,7 +20,7 @@ import {
   Shield,
 } from "lucide-react";
 
-const CreditScoreSystem = () => {
+const Credit = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [creditScore, setCreditScore] = useState(680);
   const [previousScore, setPreviousScore] = useState(680);
@@ -849,11 +849,33 @@ const CreditScoreSystem = () => {
       </div>
     </div>
   );
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* Tabs to switch */}
+      <div className="flex space-x-4 mb-6">
+        <button
+          onClick={() => setActiveTab("dashboard")}
+          className={`px-4 py-2 rounded-lg ${
+            activeTab === "dashboard" ? "bg-blue-600 text-white" : "bg-gray-200"
+          }`}
+        >
+          Dashboard
+        </button>
+        <button
+          onClick={() => setActiveTab("accounts")}
+          className={`px-4 py-2 rounded-lg ${
+            activeTab === "accounts" ? "bg-blue-600 text-white" : "bg-gray-200"
+          }`}
+        >
+          Accounts
+        </button>
+      </div>
 
-  // History Component
-  const History = () => (
-    <div className="space-y-6">{/* Payment History */}</div>
+      {/* Render the active section */}
+      {activeTab === "dashboard" && <Dashboard />}
+      {activeTab === "accounts" && <Accounts />}
+    </div>
   );
 };
 
-export default CreditScoreSystem;
+export default Credit;
