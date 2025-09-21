@@ -4,6 +4,7 @@ import Credit from "./pages/CreditManagement/Credit";
 import FraudDetectionQuiz from "./pages/quiz/FraudDetectionQuiz";
 import VirtualSimulator from "./pages/VirtualSimulator/virtualPageSimulator";
 import TestSupabase from "./testSupabase";
+import BudgetingTool from "./pages/BudgetTracker/BudgetTracker";
 
 // Temporary placeholder until you add a component
 function LearningModule() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/simulator" element={<VirtualSimulator />} />
         <Route path="/test-supabase" element={<TestSupabase />} />
         <Route path="/learning" element={<LearningModule />} />
+        <Route path="/budget" element={<BudgetingTool />} />
       </Routes>
     </BrowserRouter>
   );

@@ -80,6 +80,9 @@ const LandingPage = () => {
               <Link to="/credit" className="text-gray-700 hover:text-gray-900">
                 Credit
               </Link>
+              <Link to="/budget" className="text-gray-700 hover:text-gray-900">
+                Budget-Tools
+              </Link>
             </div>
 
             {/* Auth Buttons */}
@@ -290,7 +293,7 @@ const LandingPage = () => {
         </section>{" "}
       </main>
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-12 w-[99vw]">
         {" "}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {" "}
