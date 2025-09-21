@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AuthUI from "../../AuthUI";
 import { supabase } from "../../supabaseClient";
+import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,12 +50,36 @@ const LandingPage = () => {
           <div className="flex justify-between items-center h-16 lg:h-20">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg">P</span>
-              </div>
-              <span className="ml-3 text-xl font-semibold text-gray-900 tracking-tight">
-                PaisaBuddy
-              </span>
+              <Link to="/" className="flex items-center">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">P</span>
+                </div>
+                <span className="ml-3 text-xl font-semibold text-gray-900 tracking-tight">
+                  PaisaBuddy
+                </span>
+              </Link>
+            </div>
+
+            {/* Nav Links */}
+            <div className="hidden md:flex items-center space-x-6">
+              <Link
+                to="/learning"
+                className="text-gray-700 hover:text-gray-900"
+              >
+                Learning
+              </Link>
+              <Link to="/quiz" className="text-gray-700 hover:text-gray-900">
+                Quiz
+              </Link>
+              <Link
+                to="/simulator"
+                className="text-gray-700 hover:text-gray-900"
+              >
+                Simulator
+              </Link>
+              <Link to="/credit" className="text-gray-700 hover:text-gray-900">
+                Credit
+              </Link>
             </div>
 
             {/* Auth Buttons */}
@@ -86,7 +111,6 @@ const LandingPage = () => {
           </div>
         </nav>
       </header>
-
       {/* Hero Section */}
       <main>
         <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
@@ -265,7 +289,6 @@ const LandingPage = () => {
           </div>{" "}
         </section>{" "}
       </main>
-
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         {" "}
@@ -325,7 +348,6 @@ const LandingPage = () => {
           </div>{" "}
         </div>{" "}
       </footer>
-
       {/* Auth Modal */}
       {isAuthOpen && !session && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
