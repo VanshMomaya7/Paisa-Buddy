@@ -62,12 +62,12 @@ const LandingPage = () => {
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center space-x-6">
-              <Link
+              {/* <Link
                 to="/learning"
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
               >
                 Learning
-              </Link>
+              </Link> */}
               <Link
                 to="/quiz"
                 className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"

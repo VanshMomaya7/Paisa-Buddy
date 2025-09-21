@@ -393,14 +393,8 @@ const FraudDetectionQuiz = () => {
     else message = "🚨 Rookie Alert! Practice more!";
 
     return (
-      <div
-        className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 p-4 w-[100vw]"
-        style={{ Width: "100vw" }}
-      >
-        <div
-          className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden w-[100vw]"
-          style={{ Width: "100vw" }}
-        >
+      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 p-4 w-[50vw]">
+        <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden w-[100vw]">
           <div className="bg-gradient-to-r from-green-500 to-blue-600 text-white text-center py-12">
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-3xl font-bold mb-2">Quiz Complete!</h2>
