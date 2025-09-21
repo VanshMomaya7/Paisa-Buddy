@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { Auth as SupabaseAuth } from "@supabase/auth-ui-react";
@@ -13,16 +12,20 @@ export default function AuthUI({ googleOnly = false, setSessionInParent }) {
       setSessionInParent?.(session); // update parent
     });
 
-    const { subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setSessionInParent?.(session); // update parent
-    });
+    const { subscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setSession(session);
+        setSessionInParent?.(session); // update parent
+      }
+    );
 
     return () => subscription?.unsubscribe();
   }, [setSessionInParent]);
 
   const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google" });
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
     if (error) console.error(error.message);
   };
 
@@ -34,7 +37,7 @@ export default function AuthUI({ googleOnly = false, setSessionInParent }) {
 
   if (!session) {
     return (
-      <div className="flex items-center justify-center h-80 w-full">
+      <div className="flex items-center justify-center h-100 w-full">
         {googleOnly ? (
           <button
             onClick={handleGoogleLogin}
