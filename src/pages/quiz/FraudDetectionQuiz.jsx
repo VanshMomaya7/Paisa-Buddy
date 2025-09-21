@@ -429,7 +429,7 @@ const FraudDetectionQuiz = () => {
   const question = currentData[currentQuestion];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-blue-800 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-4 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br bg-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 p-4 transition-colors duration-300 w-[99vw]">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden mb-6 transition-colors duration-300">
