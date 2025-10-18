@@ -14,6 +14,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import HomeButton from "../HomeButton/HomeButton";
 
 const BudgetingTool = () => {
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -139,7 +140,8 @@ const BudgetingTool = () => {
   const pieData = expenses.filter((expense) => expense.amount > 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4 lg:p-8">
+    <div className="min-h-screen w-[99vw] bg-gradient-to-br from-slate-50 to-blue-50 p-4 lg:p-8">
+      <HomeButton />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">

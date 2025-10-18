@@ -3,6 +3,8 @@ import AuthUI from "../../AuthUI";
 import { supabase } from "../../supabaseClient";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../Theme/ThemeToggle";
+import Navbar from "../Navbar/Navbar";
+import VirtualPortfolioSimulator from "../VirtualSimulator/virtualSimulatorNew";
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
@@ -61,38 +63,7 @@ const LandingPage = () => {
             </div>
 
             {/* Nav Links */}
-            <div className="hidden md:flex items-center space-x-6">
-              {/* <Link
-                to="/learning"
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
-              >
-                Learning
-              </Link> */}
-              <Link
-                to="/quiz"
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
-              >
-                Quiz
-              </Link>
-              <Link
-                to="/simulator"
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
-              >
-                Simulator
-              </Link>
-              <Link
-                to="/credit"
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
-              >
-                Credit
-              </Link>
-              <Link
-                to="/budget"
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-300"
-              >
-                Budget
-              </Link>
-            </div>
+            <Navbar />
 
             {/* Auth Buttons & Theme Toggle */}
             <div className="flex items-center space-x-3">
@@ -159,22 +130,24 @@ const LandingPage = () => {
               </p>
 
               {/* CTA Button */}
-              <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-600 text-white text-lg font-semibold rounded-full hover:from-teal-600 hover:to-blue-700 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 group">
-                Get Started Free
-                <svg
-                  className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </button>
+              <Link to="/simulator">
+                <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-600 text-white text-lg font-semibold rounded-full hover:from-teal-600 hover:to-blue-700 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 group">
+                  Get Started Free
+                  <svg
+                    className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </button>
+              </Link>
 
               {/* Trust Indicators */}
               <div className="mt-12 flex items-center justify-center space-x-8 text-gray-500 dark:text-gray-400 transition-colors duration-300">
