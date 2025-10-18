@@ -5,7 +5,7 @@ import FraudDetectionQuiz from "./pages/quiz/FraudDetectionQuiz";
 import VirtualSimulator from "./pages/VirtualSimulator/virtualSimulatorNew";
 import TestSupabase from "./testSupabase";
 import BudgetingTool from "./pages/BudgetTracker/BudgetTracker";
-
+import Chatbot from "./pages/Chat/ChatBot";
 // Temporary placeholder until you add a component
 function LearningModule() {
   return <h1>Learning Module Page</h1>;
@@ -20,9 +20,9 @@ function App() {
         <Route path="/quiz" element={<FraudDetectionQuiz />} />
         <Route path="/simulator" element={<VirtualSimulator />} />
         <Route path="/test-supabase" element={<TestSupabase />} />
-        {/* <Route path="/learning" element={<LearningModule />} /> */}
         <Route path="/budget" element={<BudgetingTool />} />
       </Routes>
+      <Chatbot /> {/* global floating chatbot */}
     </BrowserRouter>
   );
 }
