@@ -43,7 +43,7 @@ const VirtualPortfolioSimulator = () => {
   // API Configuration - Update this URL to match your backend
   const API_BASE_URL =
     process.env.NODE_ENV === "production"
-      ? " https://paisa-buddy.onrender.com"
+      ? " https://paisa-buddy.onrender.com/api"
       : "http://localhost:5000/api";
 
   // Enhanced market data with more stocks
