@@ -41,7 +41,7 @@ export default function AuthUI({ googleOnly = false, setSessionInParent }) {
         {googleOnly ? (
           <button
             onClick={handleGoogleLogin}
-            className="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition"
+            className="px-6 py-3 bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-lg shadow-lg hover:shadow-xl transition w"
           >
             Sign in with Google
           </button>

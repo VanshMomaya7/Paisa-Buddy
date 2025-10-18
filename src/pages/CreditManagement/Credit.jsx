@@ -19,6 +19,7 @@ import {
   Target,
   Shield,
 } from "lucide-react";
+import ThemeToggle from "../Theme/ThemeToggle"; // Add this import
 
 const Credit = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -159,10 +160,10 @@ const Credit = () => {
 
   // Utility Functions
   const getCreditScoreColor = (score) => {
-    if (score >= 750) return "text-green-600";
-    if (score >= 650) return "text-yellow-600";
-    if (score >= 550) return "text-orange-600";
-    return "text-red-600";
+    if (score >= 750) return "text-green-600 dark:text-green-400";
+    if (score >= 650) return "text-yellow-600 dark:text-yellow-400";
+    if (score >= 550) return "text-orange-600 dark:text-orange-400";
+    return "text-red-600 dark:text-red-400";
   };
 
   const getCreditScoreLabel = (score) => {
@@ -173,10 +174,13 @@ const Credit = () => {
   };
 
   const getCreditScoreBg = (score) => {
-    if (score >= 750) return "from-green-500 to-emerald-600";
-    if (score >= 650) return "from-yellow-500 to-orange-500";
-    if (score >= 550) return "from-orange-500 to-red-500";
-    return "from-red-500 to-red-600";
+    if (score >= 750)
+      return "from-green-500 to-emerald-600 dark:from-green-600 dark:to-emerald-700";
+    if (score >= 650)
+      return "from-yellow-500 to-orange-500 dark:from-yellow-600 dark:to-orange-600";
+    if (score >= 550)
+      return "from-orange-500 to-red-500 dark:from-orange-600 dark:to-red-600";
+    return "from-red-500 to-red-600 dark:from-red-600 dark:to-red-700";
   };
 
   const getTotalCreditUtilization = () => {
@@ -332,7 +336,7 @@ const Credit = () => {
   const Dashboard = () => (
     <div className="space-y-6">
       {/* Credit Score Overview */}
-      <div className="bg-white rounded-xl shadow-lg border overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300">
         <div
           className={`bg-gradient-to-r ${getCreditScoreBg(
             creditScore
@@ -370,9 +374,9 @@ const Credit = () => {
         </div>
 
         {/* Score Range Indicator */}
-        <div className="p-6">
+        <div className="p-6 bg-white dark:bg-gray-800 transition-colors duration-300">
           <div className="relative">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <div className="flex justify-between text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors duration-300">
               <span>300</span>
               <span>Poor</span>
               <span>Fair</span>
@@ -380,7 +384,7 @@ const Credit = () => {
               <span>Excellent</span>
               <span>850</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden transition-colors duration-300">
               <div className="flex h-full">
                 <div className="bg-red-500 flex-1"></div>
                 <div className="bg-orange-500 flex-1"></div>
@@ -389,7 +393,7 @@ const Credit = () => {
               </div>
             </div>
             <div
-              className="absolute top-0 w-1 h-3 bg-white border-2 border-gray-800"
+              className="absolute top-0 w-1 h-3 bg-white border-2 border-gray-800 dark:border-gray-200 transition-colors duration-300"
               style={{ left: `${((creditScore - 300) / 550) * 100}%` }}
             ></div>
           </div>
@@ -398,83 +402,105 @@ const Credit = () => {
 
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Credit Utilization</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Credit Utilization
+              </p>
               <p
                 className={`text-2xl font-bold ${
                   getTotalCreditUtilization() <= 30
-                    ? "text-green-600"
-                    : "text-red-600"
-                }`}
+                    ? "text-green-600 dark:text-green-400"
+                    : "text-red-600 dark:text-red-400"
+                } transition-colors duration-300`}
               >
                 {getTotalCreditUtilization()}%
               </p>
-              <p className="text-sm text-gray-500">Keep below 30%</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                Keep below 30%
+              </p>
             </div>
-            <div className="bg-purple-100 p-3 rounded-full">
-              <CreditCard className="w-6 h-6 text-purple-600" />
+            <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full transition-colors duration-300">
+              <CreditCard className="w-6 h-6 text-purple-600 dark:text-purple-400" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Active Accounts</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Active Accounts
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 {accounts.length}
               </p>
-              <p className="text-sm text-gray-500">Total accounts</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                Total accounts
+              </p>
             </div>
-            <div className="bg-blue-100 p-3 rounded-full">
-              <Building2 className="w-6 h-6 text-blue-600" />
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Payment History</p>
-              <p className="text-2xl font-bold text-green-600">94%</p>
-              <p className="text-sm text-gray-500">On-time payments</p>
-            </div>
-            <div className="bg-green-100 p-3 rounded-full">
-              <CheckCircle className="w-6 h-6 text-green-600" />
+            <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full transition-colors duration-300">
+              <Building2 className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Hard Inquiries</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Payment History
+              </p>
+              <p className="text-2xl font-bold text-green-600 dark:text-green-400 transition-colors duration-300">
+                94%
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                On-time payments
+              </p>
+            </div>
+            <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-full transition-colors duration-300">
+              <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Hard Inquiries
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 {inquiries.filter((inq) => inq.type === "Hard Inquiry").length}
               </p>
-              <p className="text-sm text-gray-500">Last 12 months</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
+                Last 12 months
+              </p>
             </div>
-            <div className="bg-orange-100 p-3 rounded-full">
-              <Target className="w-6 h-6 text-orange-600" />
+            <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-full transition-colors duration-300">
+              <Target className="w-6 h-6 text-orange-600 dark:text-orange-400" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Credit Score Factors */}
-      <div className="bg-white rounded-xl shadow-lg border">
-        <div className="p-6 border-b">
-          <h3 className="text-xl font-semibold">Credit Score Breakdown</h3>
-          <p className="text-gray-600">Factors affecting your credit score</p>
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            Credit Score Breakdown
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
+            Factors affecting your credit score
+          </p>
         </div>
         <div className="p-6">
           <div className="space-y-6">
             {Object.entries(creditFactors).map(([key, factor]) => (
               <div key={key}>
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium capitalize">
+                  <span className="text-sm font-medium capitalize text-gray-900 dark:text-gray-100 transition-colors duration-300">
                     {key
                       .replace(/([A-Z])/g, " $1")
                       .replace(/^./, (str) => str.toUpperCase())}
@@ -483,22 +509,22 @@ const Credit = () => {
                     <span
                       className={`px-2 py-1 rounded text-xs font-semibold ${
                         factor.status === "Excellent"
-                          ? "bg-green-100 text-green-800"
+                          ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
                           : factor.status === "Good"
-                          ? "bg-blue-100 text-blue-800"
+                          ? "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300"
                           : factor.status === "Fair"
-                          ? "bg-yellow-100 text-yellow-800"
-                          : "bg-red-100 text-red-800"
-                      }`}
+                          ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300"
+                          : "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300"
+                      } transition-colors duration-300`}
                     >
                       {factor.status}
                     </span>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                       {factor.score}% of score
                     </span>
                   </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 transition-colors duration-300">
                   <div
                     className={`h-2 rounded-full ${
                       factor.current >= 80
@@ -519,10 +545,12 @@ const Credit = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-lg border">
-        <div className="p-6 border-b">
-          <h3 className="text-xl font-semibold">Score Improvement Actions</h3>
-          <p className="text-gray-600">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            Score Improvement Actions
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
             Simulate different scenarios to see their impact
           </p>
         </div>
@@ -530,7 +558,7 @@ const Credit = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button
               onClick={() => makePayment(1, 5000, true)}
-              className="bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg text-left transition-colors"
+              className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white p-4 rounded-lg text-left transition-colors duration-300"
             >
               <div className="font-semibold">Make On-time Payment</div>
               <div className="text-sm opacity-90">
@@ -540,7 +568,7 @@ const Credit = () => {
 
             <button
               onClick={improveUtilization}
-              className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg text-left transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white p-4 rounded-lg text-left transition-colors duration-300"
             >
               <div className="font-semibold">Reduce Utilization</div>
               <div className="text-sm opacity-90">
@@ -550,7 +578,7 @@ const Credit = () => {
 
             <button
               onClick={() => makePayment(2, 3000, false)}
-              className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-lg text-left transition-colors"
+              className="bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white p-4 rounded-lg text-left transition-colors duration-300"
             >
               <div className="font-semibold">Make Late Payment</div>
               <div className="text-sm opacity-90">
@@ -562,14 +590,16 @@ const Credit = () => {
       </div>
 
       {/* Recent Activities */}
-      <div className="bg-white rounded-xl shadow-lg border">
-        <div className="p-6 border-b">
-          <h3 className="text-xl font-semibold">Recent Credit Activities</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            Recent Credit Activities
+          </h3>
         </div>
-        <div className="divide-y divide-gray-200 max-h-80 overflow-y-auto">
+        <div className="divide-y divide-gray-200 dark:divide-gray-700 max-h-80 overflow-y-auto transition-colors duration-300">
           {creditHistory.length === 0 ? (
-            <div className="p-6 text-center text-gray-500">
-              <Clock className="w-12 h-12 mx-auto mb-3 text-gray-400" />
+            <div className="p-6 text-center text-gray-500 dark:text-gray-400 transition-colors duration-300">
+              <Clock className="w-12 h-12 mx-auto mb-3 text-gray-400 dark:text-gray-500" />
               <p>No recent activities</p>
               <p className="text-sm">
                 Use the actions above to see how different behaviors affect your
@@ -583,18 +613,22 @@ const Credit = () => {
                 className="p-6 flex items-center justify-between"
               >
                 <div>
-                  <div className="font-medium text-gray-900">
+                  <div className="font-medium text-gray-900 dark:text-gray-100 transition-colors duration-300">
                     {activity.type}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                     {activity.description}
                   </div>
-                  <div className="text-xs text-gray-400">{activity.date}</div>
+                  <div className="text-xs text-gray-400 dark:text-gray-500 transition-colors duration-300">
+                    {activity.date}
+                  </div>
                 </div>
                 <div
                   className={`font-bold text-lg ${
-                    activity.impact >= 0 ? "text-green-600" : "text-red-600"
-                  }`}
+                    activity.impact >= 0
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-red-600 dark:text-red-400"
+                  } transition-colors duration-300`}
                 >
                   {activity.impact >= 0 ? "+" : ""}
                   {activity.impact}
@@ -612,11 +646,13 @@ const Credit = () => {
     <div className="space-y-6">
       {/* Account Summary */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Credit Limit</p>
-              <p className="text-2xl font-bold text-gray-900">
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Total Credit Limit
+              </p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 ₹
                 {accounts
                   .filter((acc) => acc.type === "Credit Card")
@@ -624,34 +660,38 @@ const Credit = () => {
                   .toLocaleString("en-IN")}
               </p>
             </div>
-            <div className="bg-blue-100 p-3 rounded-full">
-              <CreditCard className="w-6 h-6 text-blue-600" />
+            <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full transition-colors duration-300">
+              <CreditCard className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Total Balance</p>
-              <p className="text-2xl font-bold text-red-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Total Balance
+              </p>
+              <p className="text-2xl font-bold text-red-600 dark:text-red-400 transition-colors duration-300">
                 ₹
                 {accounts
                   .reduce((sum, acc) => sum + acc.currentBalance, 0)
                   .toLocaleString("en-IN")}
               </p>
             </div>
-            <div className="bg-red-100 p-3 rounded-full">
-              <DollarSign className="w-6 h-6 text-red-600" />
+            <div className="bg-red-100 dark:bg-red-900/30 p-3 rounded-full transition-colors duration-300">
+              <DollarSign className="w-6 h-6 text-red-600 dark:text-red-400" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg border">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">Available Credit</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                Available Credit
+              </p>
+              <p className="text-2xl font-bold text-green-600 dark:text-green-400 transition-colors duration-300">
                 ₹
                 {accounts
                   .filter((acc) => acc.type === "Credit Card")
@@ -662,43 +702,45 @@ const Credit = () => {
                   .toLocaleString("en-IN")}
               </p>
             </div>
-            <div className="bg-green-100 p-3 rounded-full">
-              <Shield className="w-6 h-6 text-green-600" />
+            <div className="bg-green-100 dark:bg-green-900/30 p-3 rounded-full transition-colors duration-300">
+              <Shield className="w-6 h-6 text-green-600 dark:text-green-400" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Accounts Table */}
-      <div className="bg-white rounded-xl shadow-lg border">
-        <div className="p-6 border-b">
-          <h3 className="text-xl font-semibold">Your Credit Accounts</h3>
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            Your Credit Accounts
+          </h3>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 dark:bg-gray-700 transition-colors duration-300">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Account
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Balance
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Limit/Amount
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Utilization
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Status
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase transition-colors duration-300">
                   Actions
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
               {accounts.map((account) => {
                 const utilization =
                   account.type === "Credit Card"
@@ -708,32 +750,35 @@ const Credit = () => {
                     : null;
 
                 return (
-                  <tr key={account.id} className="hover:bg-gray-50">
+                  <tr
+                    key={account.id}
+                    className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
+                  >
                     <td className="px-6 py-4">
                       <div>
-                        <div className="font-semibold text-gray-900">
+                        <div className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                           {account.provider}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                           {account.type} • {account.accountNumber}
                         </div>
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-400 dark:text-gray-500 transition-colors duration-300">
                           Opened: {account.openDate}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="font-semibold text-red-600">
+                      <div className="font-semibold text-red-600 dark:text-red-400 transition-colors duration-300">
                         ₹{account.currentBalance.toLocaleString("en-IN")}
                       </div>
                       {account.minimumDue > 0 && (
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
                           Min Due: ₹{account.minimumDue.toLocaleString("en-IN")}
                         </div>
                       )}
                     </td>
                     <td className="px-6 py-4">
-                      <div className="font-semibold">
+                      <div className="font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
                         ₹
                         {(
                           account.creditLimit || account.originalAmount
@@ -746,15 +791,15 @@ const Credit = () => {
                           <div
                             className={`font-semibold ${
                               utilization <= 30
-                                ? "text-green-600"
+                                ? "text-green-600 dark:text-green-400"
                                 : utilization <= 70
-                                ? "text-yellow-600"
-                                : "text-red-600"
-                            }`}
+                                ? "text-yellow-600 dark:text-yellow-400"
+                                : "text-red-600 dark:text-red-400"
+                            } transition-colors duration-300`}
                           >
                             {utilization}%
                           </div>
-                          <div className="w-16 bg-gray-200 rounded-full h-2 mt-1">
+                          <div className="w-16 bg-gray-200 dark:bg-gray-700 rounded-full h-2 mt-1 transition-colors duration-300">
                             <div
                               className={`h-2 rounded-full ${
                                 utilization <= 30
@@ -770,16 +815,18 @@ const Credit = () => {
                           </div>
                         </div>
                       ) : (
-                        <span className="text-gray-400">N/A</span>
+                        <span className="text-gray-400 dark:text-gray-500 transition-colors duration-300">
+                          N/A
+                        </span>
                       )}
                     </td>
                     <td className="px-6 py-4">
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-semibold ${
                           account.paymentStatus === "Current"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-red-100 text-red-800"
-                        }`}
+                            ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300"
+                            : "bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300"
+                        } transition-colors duration-300`}
                       >
                         {account.paymentStatus}
                       </span>
@@ -797,7 +844,7 @@ const Credit = () => {
                               true
                             )
                           }
-                          className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm transition-colors"
+                          className="bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors duration-300"
                         >
                           Pay Now
                         </button>
@@ -812,10 +859,12 @@ const Credit = () => {
       </div>
 
       {/* Payment Simulator */}
-      <div className="bg-white rounded-xl shadow-lg border">
-        <div className="p-6 border-b">
-          <h3 className="text-xl font-semibold">Payment Simulator</h3>
-          <p className="text-gray-600">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="p-6 border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            Payment Simulator
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
             See how different payment scenarios affect your credit score
           </p>
         </div>
@@ -825,7 +874,7 @@ const Credit = () => {
               onClick={() =>
                 simulateNewCreditApplication("HDFC Bank", "Credit Card", true)
               }
-              className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg text-left transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white p-4 rounded-lg text-left transition-colors duration-300"
             >
               <div className="font-semibold">Apply for New Credit Card</div>
               <div className="text-sm opacity-90">
@@ -837,7 +886,7 @@ const Credit = () => {
               onClick={() =>
                 simulateNewCreditApplication("SBI", "Personal Loan", false)
               }
-              className="bg-orange-600 hover:bg-orange-700 text-white p-4 rounded-lg text-left transition-colors"
+              className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600 text-white p-4 rounded-lg text-left transition-colors duration-300"
             >
               <div className="font-semibold">Apply for Loan (Rejected)</div>
               <div className="text-sm opacity-90">
@@ -849,31 +898,54 @@ const Credit = () => {
       </div>
     </div>
   );
-  return (
-    <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col justify-center align-center items-center w-full">
-      {/* Tabs to switch */}
-      <div className="flex space-x-4 mb-6 justify-center">
-        <button
-          onClick={() => setActiveTab("dashboard")}
-          className={`px-4 py-2 rounded-lg ${
-            activeTab === "dashboard" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-        >
-          Dashboard
-        </button>
-        <button
-          onClick={() => setActiveTab("accounts")}
-          className={`px-4 py-2 rounded-lg ${
-            activeTab === "accounts" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-        >
-          Accounts
-        </button>
-      </div>
 
-      {/* Render the active section */}
-      {activeTab === "dashboard" && <Dashboard />}
-      {activeTab === "accounts" && <Accounts />}
+  return (
+    <div
+      style={({ maxHeight: "100vw" }, { width: "100vw" })}
+      className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 max-w-full w-full"
+    >
+      <div className="max-w-full mx-auto px-4 py-8 flex flex-col justify-center align-center items-center w-full">
+        {/* Header with Theme Toggle */}
+        <div className="w-full flex justify-center items-center mb-8">
+          <div>
+            <h1 className="text-3xl text-center font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300">
+              Credit Dashboard
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">
+              Monitor and improve your credit health
+            </p>
+          </div>
+        </div>
+
+        {/* Tabs to switch */}
+        <div className="flex space-x-4 mb-6 justify-center">
+          <ThemeToggle />
+          <button
+            onClick={() => setActiveTab("dashboard")}
+            className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+              activeTab === "dashboard"
+                ? "bg-blue-600 dark:bg-blue-500 text-white"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+            }`}
+          >
+            Dashboard
+          </button>
+          <button
+            onClick={() => setActiveTab("accounts")}
+            className={`px-6 py-3 rounded-lg font-semibold transition-colors duration-300 ${
+              activeTab === "accounts"
+                ? "bg-blue-600 dark:bg-blue-500 text-white"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+            }`}
+          >
+            Accounts
+          </button>
+        </div>
+
+        {/* Render the active section */}
+        {activeTab === "dashboard" && <Dashboard />}
+        {activeTab === "accounts" && <Accounts />}
+      </div>
     </div>
   );
 };
