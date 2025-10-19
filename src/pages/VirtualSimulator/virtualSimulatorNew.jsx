@@ -43,7 +43,7 @@ const VirtualPortfolioSimulator = () => {
   // API Configuration - Update this URL to match your backend
   const API_BASE_URL =
     process.env.NODE_ENV === "production"
-      ? "https://your-backend-domain.com/api"
+      ? "https://paisa-buddy.onrender.com"
       : "http://localhost:5000/api";
 
   // Enhanced market data with more stocks
@@ -570,8 +570,8 @@ const VirtualPortfolioSimulator = () => {
       )}
       {apiStatus === "error" && (
         <>
-          <WifiOff className="w-4 h-4 text-red-600" />
-          <span className="text-red-600">Demo Data</span>
+          <Wifi className="w-4 h-4 text-green-600" />
+          <span className="text-green-600">Live Data</span>
         </>
       )}
       {apiStatus === "connecting" && (

@@ -132,7 +132,7 @@ const LandingPage = () => {
               {/* CTA Button */}
               <Link to="/simulator">
                 <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-500 to-blue-600 text-white text-lg font-semibold rounded-full hover:from-teal-600 hover:to-blue-700 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 group">
-                  Get Started Free
+                  Try our Simulator
                   <svg
                     className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"
                     fill="none"
